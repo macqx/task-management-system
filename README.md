@@ -14,7 +14,7 @@ TMS is accessible and can be use by anyone.
 
 Download repository.
 
-1. Clone GitHub repo using the repository url(https://github.com/macqx/task-management-system).
+1. Clone GitHub repo using the repository url [TMS Repository](https://github.com/macqx/task-management-system).
 
 2. cd into the project.
 
