@@ -67,6 +67,7 @@ class TaskController extends Controller
         return Task::destroy($id);
     }
 
+
     /**
      * Search for a name
      *
