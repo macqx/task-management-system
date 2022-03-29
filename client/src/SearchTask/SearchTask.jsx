@@ -1,7 +1,8 @@
 import { PlusIcon, SearchIcon } from "@heroicons/react/solid";
-import { useQuery, useQueryClient } from "react-query";
+import { useEffect } from "react";
+import { useQueryClient } from "react-query";
 import { searchTask } from "../api";
-import useDebounce from "../hooks/useDebounce";
+
 export const SearchTask = ({
   value,
   setValue,
@@ -9,14 +10,13 @@ export const SearchTask = ({
   setToggleCreate,
 }) => {
   const queryClient = useQueryClient();
-  const debouncedFilter = useDebounce(value, 500);
-  const { data, isLoading } = useQuery(
-    ["tasks", value],
-    () => searchTask(debouncedFilter),
-    { enabled: Boolean(debouncedFilter) }
-  );
 
-  console.log(data);
+  useEffect(async () => {
+    if (value) {
+      queryClient.setQueryData("tasks", await searchTask(value));
+      return;
+    }
+  }, [value]);
 
   return (
     <div className="flex items-center justify-between gap-2 w-full">
@@ -36,7 +36,7 @@ export const SearchTask = ({
             placeholder="Type any task..."
             className="w-full outline-none bg-transparent"
           />
-          <button type="submit">
+          <button onClick={() => handleSearch(value)}>
             <SearchIcon className="h-5 cursor-pointer" />
           </button>
         </div>

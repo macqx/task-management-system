@@ -25,6 +25,18 @@ export const getTaskById = async ({ queryKey }) => {
   return response.json();
 };
 
+export const searchTask = async (taskname) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_APP_API_SERVER}/api/tasks/search/${taskname}`
+  );
+
+  if (!response.ok) {
+    throw new Error(response.json().message);
+  }
+
+  return await response.json();
+};
+
 export const createTask = async ({ ...data }) => {
   const response = await fetch(
     `${import.meta.env.VITE_APP_API_SERVER}/api/tasks/`,
@@ -76,16 +88,4 @@ export const removeTask = async (id) => {
   }
 
   return true;
-};
-
-export const searchTask = async (taskname) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_APP_API_SERVER}/api/tasks/search/${taskname}`
-  );
-
-  if (!response.ok) {
-    throw new Error(response.json().message);
-  }
-
-  return response.json();
 };

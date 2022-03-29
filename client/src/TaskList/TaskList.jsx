@@ -10,18 +10,17 @@ export const TaskList = ({
 }) => {
   return (
     <div className="flex flex-col w-full gap-2">
-      {data &&
-        data?.map((task) => (
-          <TaskItem
-            key={task?.id}
-            task={task}
-            isError={isError}
-            isLoading={isLoading}
-            toggleUpdate={toggleUpdate}
-            setToggleUpdate={setToggleUpdate}
-            handleUpdateTask={handleUpdateTask}
-          />
-        ))}
+      {data?.map((task) => (
+        <TaskItem
+          key={task?.id}
+          task={task}
+          isError={isError}
+          isLoading={isLoading}
+          toggleUpdate={toggleUpdate}
+          setToggleUpdate={setToggleUpdate}
+          handleUpdateTask={handleUpdateTask}
+        />
+      ))}
     </div>
   );
 };

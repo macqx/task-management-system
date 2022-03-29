@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "react-query";
 import { getAllTasks, searchTask } from "./api";
 import { CreateTask } from "./CreateTask";
@@ -46,6 +46,7 @@ export default function App() {
         setValue={setValue}
         toggleCreate={toggleCreate}
         setToggleCreate={setToggleCreate}
+        tasks={data}
       />
       <TaskList
         data={data}
